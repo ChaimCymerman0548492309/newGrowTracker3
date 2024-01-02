@@ -11,7 +11,7 @@ const RedisClient = createClient({
     url: 'redis://redis:6379'
 });
 
-const port = 4000;
+const port = 4500;
 
 const app = express();
 
@@ -44,3 +44,7 @@ httpServer.listen(port, () => {
 RedisClient.connect()
 .then(() =>  console.log( "connected successfully to Redis client!!!" ))
 .catch((error) => {  if (error instanceof Error) console.log(error.message) });
+
+app.get('/',(req,res) => {
+    res.send('hi hi ch')
+})

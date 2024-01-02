@@ -16,6 +16,7 @@ services:
       interval: 10s
       timeout: 25s
       retries: 3
+
   redis:
     image: redis:latest
     restart: always
@@ -36,7 +37,6 @@ services:
     ports:
       - 4500:4500
     environment:
-      # NODE_ENV: production
       PGHOST: pg
       PGPORT: 5432
       PGUSER: postgres
@@ -51,30 +51,23 @@ services:
       - pg
       - redis
       - client
+    volumes:
+      - ./server/app/src:/app/src
     develop:
       watch:
         - action: rebuild
           path: ./server/app/package.json
-    volumes:
-      - ./server/app/src:/app/src
 
   client:
     container_name: client
     build: ./client
     ports:
       - "3000:3000"
-    develop:
-      watch:
-        - action: rebuild
-          path: ./client/vite-project/package.json
     volumes:
-    - ./client/vite-project/src:/app/src
-
-
-
+      - ./client/vite-project/src:/app/src
 
 volumes:
-    redis:
-      driver: local
-    pg:
-      driver: local
+  redis:
+    driver: local
+  pg:
+    driver: local
