@@ -28,7 +28,6 @@ const getTitleFontSize = (size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
 export const CustomTitle = styled.h1<CustomTitleProps>`
   width: 1098px;
   height: 108px;
-  flex-shrink: 0;
   color: ${({ color }) => color || '#0C2706'};
   font-family: 'Carter One', cursive;
   font-size: ${({ size }) => getTitleFontSize(size)};

@@ -1,36 +1,55 @@
 import React, { useEffect } from 'react';
-import { MapContainer } from '../../styles/MapContainer'
+import { MapContainer } from '../../styles/MapContainer';
 import 'ol/ol.css';
 import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
-import { OSM } from 'ol/source';
+import { OSM, Vector as VectorSource } from 'ol/source';
+import { Vector as VectorLayer } from 'ol/layer';
+import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style';
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
+
+const Coordinates = [32.109333, 34.855499];
 
 const OpenLayersMap = () => {
   useEffect(() => {
     const map = new Map({
-      target: 'map', // זהו ID של האלמנט שבו יוצג המפה
+      target: 'map',
       layers: [
         new TileLayer({
           source: new OSM(),
         }),
       ],
       view: new View({
-        center: [0, 0],
-        zoom: 2,
+        center: [ 10,10],
+        zoom: 3, // זום נוכחי
       }),
     });
 
+    // יצירת מקור ושכבת וקטורים להוספת הסימון (Marker)
+    const vectorSource = new VectorSource({
+      features: [new Feature(new Point([34, 1]))],
+    });
+
+    const vectorLayer = new VectorLayer({
+      source: vectorSource,
+      style: new Style({
+        image: new CircleStyle({
+          radius: 8,
+          fill: new Fill({ color: 'red' }),
+          stroke: new Stroke({ color: 'white', width: 2 }),
+        }),
+      }),
+    });
+
+    map.addLayer(vectorLayer);
+
     return () => {
-      // מניח שכאשר הרכיב נעצר, תרצה להשמיד את המפה
       map.dispose();
     };
-  }, []); // הוסף תלות כפי שצריך
+  }, []);
 
-  return (
-    <MapContainer id="map">
-      {/* אם רוצים להוסיף דברים נוספים לתוך המפה, נוסיף כאן */}
-    </MapContainer>
-  );
+  return <MapContainer id="map"></MapContainer>;
 };
 
 export default OpenLayersMap;
