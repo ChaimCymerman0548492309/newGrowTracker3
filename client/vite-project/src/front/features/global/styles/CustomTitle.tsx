@@ -3,6 +3,7 @@ import styled, { CSSProperties } from 'styled-components';
 interface CustomTitleProps {
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: string;
+  fontStyles?: any;
 }
 
 const getTitleFontSize = (size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
@@ -34,6 +35,8 @@ export const CustomTitle = styled.h1<CustomTitleProps>`
   font-style: normal;
   font-weight: 400;
   line-height: 72px; /* 75% */
+  ${({ fontStyles }) => fontStyles}
+
 
 `;
 

@@ -1,5 +1,7 @@
 import React, {FC} from 'react';
 import { CustomTitle } from '../../../global/styles/CustomTitle';
+import { StyledParagraph } from '../../../global/styles/StyledParagraph';
+
 const GardenInfoPage  =() => {
     const park = {
         name: 'Citys Garden',
@@ -30,8 +32,9 @@ const GardenInfoPage  =() => {
 
     return (
         <div>
-            <CustomTitle> {park.name}</CustomTitle>
-            <p>Description: {park.Description}</p>
+            <CustomTitle size="h1" color="#ff0000" fontStyles={{ fontWeight: 'bold' }}> {park.name}</CustomTitle>
+            <StyledParagraph fontSize="20px" textColor="blue">
+                Description: {park.Description}</StyledParagraph>
             <p>Contact Person: {park.Contact_person.name}</p>
             <p>Contact Number: {park.Contact_person.phone_number}</p>
             <p>Gardner: {park.Gardner.name}</p>
