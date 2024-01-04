@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
 import { CustomTitle } from '../../../global/styles/CustomTitle';
-import { StyledParagraph } from '../../../global/styles/StyledParagraph';
+import { StyledLabel, StyledParagraph } from '../../../global/styles/StyledParagraph';
 import { Container, LeftDiv, RightDiv, TextContainer, TytleContainer } from '../../../global/styles/Divs';
 import garden from '../../../../../assets/garden.svg'
 import Ellipse from '../../../../../assets/Ellipse.svg'
 import { MapContainer } from '../../../global/styles/MapContainer';
 import OpenLayersMap from '../../../global/components/openLayersMap/OpenLayersMap';
-
-
-
+import { foto } from '../../../../../assets/Gardner_image';
+import { foto3 } from '../../../../../assets/foto3';
+import { foto2 } from '../../../../../assets/foto2';
+import { StyledCheckbox } from '../../../global/styles/StyledCheckbox';
+import './GardenInfoPage.css'
 
 
 const GardenInfoPage = () => {
@@ -38,7 +40,7 @@ const GardenInfoPage = () => {
             street: 'Menachem Begin 230',
             city: 'Tel Aviv'
         },
-        GardenImg: [garden,],
+        GardenImg: [garden, foto, foto2, foto3],
         GardenImgAlt: 'Garden Image',
     };
     return (
@@ -72,13 +74,22 @@ const GardenInfoPage = () => {
                         <div style={{ border: '2px solid red', }}>
                             <StyledParagraph>Treatment:</StyledParagraph>
                             <ul>
-                                <li>Grass Trimming: {park.Treatment.grass_trimming ? 'Yes' : 'No'}</li>
-                                <li>Tree Pruning: {park.Treatment.tree_pruning ? 'Yes' : 'No'}</li>
-                                <li>Pest Control: {park.Treatment.pest_control ? 'Yes' : 'No'}</li>
+                                <li>
+                                    <input type="checkbox" checked={park.Treatment.grass_trimming} 
+                                readOnly style={{ cursor: 'pointer' }} />
+                                    <StyledLabel >Grass Trimming</StyledLabel>
+                                </li>
+                                <li>
+                                    <input type="checkbox" checked={park.Treatment.tree_pruning} readOnly style={{ cursor: 'pointer' }} />
+                                    <StyledLabel>Tree Pruning</StyledLabel>
+                                </li>
+                                <li>
+                                    <input type="checkbox" checked={park.Treatment.pest_control} readOnly style={{ cursor: 'pointer' }} />
+                                    <StyledLabel>Pest Control</StyledLabel>
+                                </li>
                             </ul>
                         </div>
                     </div>
-
                     <div style={{ width: '52%' }} >
                         <div style={{ border: '2px solid green' }}>
                             <StyledParagraph lineHeight='0px'>Contact Person:
@@ -97,30 +108,40 @@ const GardenInfoPage = () => {
                                 <StyledParagraph>Gardner Rating: <StyledParagraph textColor="#080808">
                                     {park.Gardner.Rating}</StyledParagraph></StyledParagraph>
                             </div>
-                            <div style={{ alignItems :'center',border: '2px solid red' ,width: '100px' }}>
+                            <div style={{ alignItems: 'center', border: '2px solid red', width: '100px' }}>
                                 <div style={{ borderRadius: '30%' }}>
                                     <img src={park.Gardner.gardner_image}
                                         alt={"Gardner.gardner_image"} style={{ width: '100px', height: '100px' }} />
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
                 </div>
                 {/* <p>Coordinates: {park.Coordinates.join(', ')}</p> */}
                 <MapContainer>
                     <OpenLayersMap />
                 </MapContainer>
-
-
             </LeftDiv>
             <RightDiv>
-                <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[0]} alt={`Garden Image `} />
-                <div>
-                    <img src={park.GardenImgAlt} alt="Garden Image" />
+                <div style={{ height: '85%', marginTop: '15%' }}>
+                    <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[0]}
+                        alt={`Garden Image `} />
                 </div>
+                <div className='imgesDiv' >
+                    <div className='imgeDiv'>
+                        <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[1]}
+                            alt={`Garden Image `} />
+                    </div>
+                    <div className='imgeDiv'>
+                        <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[2]}
+                            alt={`Garden Image `} />
+                    </div>
+                    <div className='imgeDiv'>
+                        <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[3]}
+                            alt={`Garden Image `} />
+                    </div>
+                </div>
+
             </RightDiv>
         </Container>
     );

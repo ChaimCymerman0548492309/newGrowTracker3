@@ -21,3 +21,14 @@ export const StyledParagraph = styled.p<StyledParagraphProps>`
   color: ${(props) => props.textColor || '#25880C'};
 `;
 
+export const StyledLabel = styled.label<StyledParagraphProps>`
+  font-family: ${({ fontFamily }) => fontFamily || 'Carter One'};
+  font-family: 'Carter One', cursive;
+  font-style: normal;
+  font-size: ${(props) => props.fontSizeCustom || '20px'};
+  font-style: ${(props) => props.fontStyle || 'bo'};
+  font-weight: ${(props) => props.fontWeight || 400};
+  line-height: ${(props) => props.lineHeight || '3px'};
+  color: ${(props) => props.textColor || '#0c0c0c'};
+`;
+

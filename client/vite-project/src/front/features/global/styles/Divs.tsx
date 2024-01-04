@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
+  border-color: #bbebb7;
+  border-style: solid;
+
 `;
 export const TytleContainer = styled.div`
   display: flex;
@@ -16,13 +20,16 @@ export const LeftDiv = styled.div`
   height: 100%;
   border-color: #3498db;
   border-style: solid;
+
 `;
 
 export const RightDiv = styled.div`
-  flex: 3;
+  width: 30%;
+  height: 100%;
   border-color: #2ecc71;
   border-style: solid;
 border-radius : 10px;
+justify-items: center;
 `;
 
 
