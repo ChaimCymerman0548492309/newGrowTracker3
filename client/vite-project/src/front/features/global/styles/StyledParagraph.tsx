@@ -11,11 +11,13 @@ interface StyledParagraphProps {
 }
 
 export const StyledParagraph = styled.p<StyledParagraphProps>`
-  font-family: ${({fontFamily}) => fontFamily || 'Carter One'};
+  font-family: ${({ fontFamily }) => fontFamily || 'Carter One'};
+  font-family: 'Carter One', cursive;
+  font-style: normal;
   font-size: ${(props) => props.fontSizeCustom || '20px'};
   font-style: ${(props) => props.fontStyle || 'bo'};
   font-weight: ${(props) => props.fontWeight || 400};
-  line-height: ${(props) => props.lineHeight || '33px'};
+  line-height: ${(props) => props.lineHeight || '3px'};
   color: ${(props) => props.textColor || '#25880C'};
 `;
 

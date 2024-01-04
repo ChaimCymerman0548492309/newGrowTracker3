@@ -28,5 +28,6 @@ border-radius : 10px;
 
 export const TextContainer = styled.div`
   max-width: 80%;
-  word-wrap: break-word; /* Allow the text to break onto the next line if it exceeds the container's width */
+  word-wrap: break-word; 
+  /* Allow the text to break onto the next line if it exceeds the container's width */
 `;

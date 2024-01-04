@@ -23,7 +23,7 @@ const GardenInfoPage = () => {
             name: 'Oliver Greenfield',
             Phone: '+1 (555) 123-4567',
             Rating: 5,
-            gardner_image : Ellipse,
+            gardner_image: Ellipse,
         },
         Park_size: 100,
         Vegetation: 'grass, ornamental trees',
@@ -44,40 +44,71 @@ const GardenInfoPage = () => {
     return (
         <Container>
             <LeftDiv>
-                <TytleContainer style={{ border: '2px solid black' }}>
-                    <CustomTitle size="h1" color="#0C2706" fontStyles={{ fontWeight: 'bold' }}> {park.name}</CustomTitle>
+                <TytleContainer style={{ border: '2px solid black', textAlign: 'center' }}>
+                    <CustomTitle size="h1" color="#0C2706" fontStyles={{ fontWeight: 'bold' }}>
+                        {park.name}</CustomTitle>
                 </TytleContainer>
-                <TextContainer>Address: <StyledParagraph textColor="#080808">{park.Address.street}, {park.Address.city}</StyledParagraph></TextContainer>
+                <StyledParagraph>Address: <StyledParagraph textColor="#080808">{park.Address.street},
+                    {park.Address.city}</StyledParagraph></StyledParagraph>
 
                 <TextContainer>
-                    <StyledParagraph>Description: </StyledParagraph>
-                    <StyledParagraph textColor="#080808">{park.Description}</StyledParagraph>
+                    <StyledParagraph >Description: </StyledParagraph>
+                    <StyledParagraph textColor="#080808" lineHeight="23px">{park.Description}
+                    </StyledParagraph>
                 </TextContainer>
-                <div style={{ display: 'flex',justifyItems :'', border: '2px solid black' }}>
-                    <div style={{ border: '2px solid red' }}>
-                        <p>Park Size: {park.Park_size} square meters</p>
-                        <p>Vegetation: {park.Vegetation}</p>
-                        <p>Type: {park.Type}</p>
-                    </div>
-                    <div>
-                        <div style={{ border: '2px solid green' }}>
-                            <StyledParagraph lineHeight='0px'>Contact Person:<StyledParagraph textColor="#080808">{park.Contact_person.name}</StyledParagraph> </StyledParagraph>
-                            <StyledParagraph lineHeight='0px'>Contact Number:<StyledParagraph textColor="#080808">{park.Contact_person.phone_number}</StyledParagraph> </StyledParagraph>
+                <div style={{ display: 'flex', border: '2px solid black', justifyContent: 'space-between' }}>
+                    <div style={{ border: '2px solid red', paddingLeft: '2%', width: '42%' }}>
+                        <div style={{ border: '2px solid red', }}>
+                            <StyledParagraph lineHeight='0px'>Park Size:
+                                <StyledParagraph textColor="#080808">{
+                                    park.Park_size} square meters</StyledParagraph> </StyledParagraph>
+                            <StyledParagraph lineHeight='0px'>Vegetation:
+                                <StyledParagraph textColor="#080808" lineHeight="15px">{park.Vegetation}
+                                </StyledParagraph>
+                            </StyledParagraph>
+                            <StyledParagraph lineHeight='0px'>Type:<StyledParagraph textColor="#080808" >
+                                {park.Type}</StyledParagraph> </StyledParagraph>
                         </div>
-                        <div style={{ border: '2px solid green' ,display : 'flex'}}>
+                        <div style={{ border: '2px solid red', }}>
+                            <StyledParagraph>Treatment:</StyledParagraph>
+                            <ul>
+                                <li>Grass Trimming: {park.Treatment.grass_trimming ? 'Yes' : 'No'}</li>
+                                <li>Tree Pruning: {park.Treatment.tree_pruning ? 'Yes' : 'No'}</li>
+                                <li>Pest Control: {park.Treatment.pest_control ? 'Yes' : 'No'}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style={{ width: '52%' }} >
                         <div style={{ border: '2px solid green' }}>
-                            <p>Gardner: {park.Gardner.name}</p>
-                            <p>Gardner Phone: {park.Gardner.Phone}</p>
-                            <p>Gardner Rating: {park.Gardner.Rating}</p> </div>
-                            <div style={{borderRadius : '30%' ,paddingLeft : '5px'}}>
-                                <img src={park.Gardner.gardner_image} alt={"Gardner.gardner_image"} style={{width: '100px', height: '100px'}}/>
+                            <StyledParagraph lineHeight='0px'>Contact Person:
+                                <StyledParagraph textColor="#080808">{park.Contact_person.name}</StyledParagraph>
+                            </StyledParagraph>
+                            <StyledParagraph lineHeight='0px'>Contact Number:
+                                <StyledParagraph textColor="#080808">{park.Contact_person.phone_number}
+                                </StyledParagraph> </StyledParagraph>
+                        </div>
+                        <div style={{ border: '2px solid green', display: 'flex' }}>
+                            <div style={{ border: '2px solid green', width: '60%' }}>
+                                <StyledParagraph>Gardner: <StyledParagraph textColor="#080808">
+                                    {park.Gardner.name}</StyledParagraph></StyledParagraph>
+                                <StyledParagraph>Gardner Phone: <StyledParagraph textColor="#080808">
+                                    {park.Gardner.Phone}</StyledParagraph></StyledParagraph>
+                                <StyledParagraph>Gardner Rating: <StyledParagraph textColor="#080808">
+                                    {park.Gardner.Rating}</StyledParagraph></StyledParagraph>
                             </div>
-                           
+                            <div style={{ alignItems :'center',border: '2px solid red' ,width: '100px' }}>
+                                <div style={{ borderRadius: '30%' }}>
+                                    <img src={park.Gardner.gardner_image}
+                                        alt={"Gardner.gardner_image"} style={{ width: '100px', height: '100px' }} />
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
                 </div>
-                <p>Treatment: {JSON.stringify(park.Treatment)}</p>
                 {/* <p>Coordinates: {park.Coordinates.join(', ')}</p> */}
                 <MapContainer>
                     <OpenLayersMap />
