@@ -1,17 +1,17 @@
-import React, { FC } from 'react';
+// import React, { FC } from 'react';
 import { CustomTitle } from '../../../global/styles/CustomTitle';
 import { StyledLabel, StyledParagraph } from '../../../global/styles/StyledParagraph';
 import { Container, LeftDiv, RightDiv, TextContainer, TytleContainer } from '../../../global/styles/Divs';
-import garden from '../../../../../assets/garden.svg'
-import Ellipse from '../../../../../assets/Ellipse.svg'
+import garden from '../../../../assets/garden.svg'
+import Ellipse from '../../../../assets/Ellipse.svg'
 import { MapContainer } from '../../../global/styles/MapContainer';
 import OpenLayersMap from '../../../global/components/openLayersMap/OpenLayersMap';
-import { foto } from '../../../../../assets/Gardner_image';
-import { foto3 } from '../../../../../assets/foto3';
-import { foto2 } from '../../../../../assets/foto2';
+import { foto } from '../../../../assets/Gardner_image';
+import { foto3 } from '../../../../assets/foto3';
+import { foto2 } from '../../../../assets/foto2';
 import { StyledCheckbox } from '../../../global/styles/StyledCheckbox';
 import './GardenInfoPage.css'
-
+import { Paregraph } from '../../../global/styles/StyledParagraph';
 
 const GardenInfoPage = () => {
     const park = {
@@ -50,8 +50,10 @@ const GardenInfoPage = () => {
                     <CustomTitle size="h1" color="#0C2706" fontStyles={{ fontWeight: 'bold' }}>
                         {park.name}</CustomTitle>
                 </TytleContainer>
-                <StyledParagraph>Address: <StyledParagraph textColor="#080808">{park.Address.street},
-                    {park.Address.city}</StyledParagraph></StyledParagraph>
+                <StyledParagraph>Address: <Paregraph component='span' textColor='black' >{park.Address.street},
+                    {park.Address.city}</Paregraph></StyledParagraph>
+                {/* <StyledParagraph>Address: <StyledParagraph textColor="#080808">{park.Address.street},
+                    {park.Address.city}</StyledParagraph></StyledParagraph> */}
 
                 <TextContainer>
                     <StyledParagraph >Description: </StyledParagraph>
@@ -123,7 +125,7 @@ const GardenInfoPage = () => {
                 </MapContainer>
             </LeftDiv>
             <RightDiv>
-                <div style={{ height: '85%', marginTop: '15%' }}>
+                <div style={{ height: '85%', marginTop: '15%' ,display : 'flex' ,flexDirection :'column' , flexGrow : '1'}}>
                     <img style={{ width: '100%', height: '100%' }} src={park.GardenImg[0]}
                         alt={`Garden Image `} />
                 </div>

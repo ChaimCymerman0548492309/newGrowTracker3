@@ -32,3 +32,20 @@ export const StyledLabel = styled.label<StyledParagraphProps>`
   color: ${(props) => props.textColor || '#0c0c0c'};
 `;
 
+import { FC, ReactNode } from 'react';
+
+type ParegraphProps = {
+  children: ReactNode
+  component?: string;
+  fontSize?: string;
+  textColor?: string;
+  fontFamily?: string;
+  fontSizeCustom?: string;
+  fontStyle?: string;
+  fontWeight?: number;
+  lineHeight?: string;
+}
+
+export const Paregraph : FC<ParegraphProps>= ({children, component, textColor})=>{
+  return <StyledParagraph as={component} textColor={textColor}>{children}</StyledParagraph>
+}
