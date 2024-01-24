@@ -3,6 +3,7 @@ import { Park } from '../../../interfaces/garden_interfise';
 import { Paragraph, StyledLabel, StyledParagraph } from '../../../../global/styles/StyledParagraph';
 import Garden_info from './garden_info/garden_info';
 import Gardner from './Gardner/Gardner';
+import User from './user/User';
 
 
 
@@ -17,14 +18,17 @@ function Main_Body_gardenInfoPage({ park }: BodyProps) {
         <>
             <div style={{
                 display: 'flex',
-                 justifyContent: 'space-between'
+                justifyContent: 'space-between'
             }}>
-                <div style={{width: '42%' }}>
+                <div style={{ width: '42%' }}>
                     <Garden_info park={park} />
                 </div>
-                <div style={{ width: '52%', display: 'flex',
-                 flexDirection: 'column' }} >
+                <div style={{
+                    width: '52%', display: 'flex',
+                    flexDirection: 'column'
+                }} >
                     <Gardner park={park} />
+                    <User park={park} />
                 </div>
             </div>
         </>
